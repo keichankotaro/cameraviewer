@@ -6,8 +6,18 @@ block_cipher = None
 
 a = Analysis(
     ['cameraviewer.py'],
-    pathex=[],
-    binaries=[],
+    pathex=[
+        'C:\\Users\\keich\\AppData\\Local\\Programs\\Python\\Python37\\lib\\site-packages\\cv2\\',
+    	'C:\\Users\\keich\\AppData\\Local\\Programs\\Python\\Python37\\Lib\\site-packages\\win32',
+#    	'C:\\Users\\keich\\AppData\\Local\\Programs\\Python\\Python37\\Lib\\site-packages\\win32ctypes\\pywin32'
+    	'C:\\Users\\keich\\AppData\\Local\\Programs\\Python\\Python37\\Lib\\site-packages\\pywin32_system32',
+#    	'C:\\Users\\keich\\AppData\\Local\\Programs\\Python\\Python37\\Lib\\site-packages\\win32ctypes'
+    ],
+    binaries=[
+    	('C:\\Users\\keich\\AppData\\Local\\Programs\\Python\\Python37\\Lib\\site-packages\\cv2\\', 'cv2'),
+    	('C:\\Users\\keich\\AppData\\Local\\Programs\\Python\\Python37\\Lib\\site-packages\\pywin32_system32\\pythoncom37.dll', 'pywin32_system32'),
+    	('C:\\Users\\keich\\AppData\\Local\\Programs\\Python\\Python37\\Lib\\site-packages\\pywin32_system32\\pywintypes37.dll', 'pywin32_system32')
+    ],
     datas=[],
     hiddenimports=[],
     hookspath=[],
