@@ -39,22 +39,10 @@ with open("./main.cfg", "r") as f:
 
 cfg = cfg.split("|")
 
-def Exit(root):
-    messagebox.showinfo("Exit", "Bye.")
-    root.destroy()
-    sys.exit()
-
-def reload(root):
-    root.destroy()
-    setcam()
-
 def run():
     print("please wait...")
     cv2.namedWindow("camera")
     v = cv2.VideoCapture(int(cfg[5]))
-    #v = cv2.VideoCapture(1)
-    #cam_width = v.get(cv2.CAP_PROP_FRAME_WIDTH)
-    #cam_height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
     v.set(cv2.CAP_PROP_FRAME_WIDTH, int(cfg[0]))
     v.set(cv2.CAP_PROP_FRAME_HEIGHT, int(cfg[1]))
     v.set(cv2.CAP_PROP_FPS, int(cfg[4]))
