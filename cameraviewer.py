@@ -41,6 +41,8 @@ cfg = cfg.split("|")
 
 def run():
     print("please wait...")
+    global cfg
+    roop = 0
     cv2.namedWindow("camera")
     v = cv2.VideoCapture(int(cfg[5]))
     v.set(cv2.CAP_PROP_FRAME_WIDTH, int(cfg[0]))
@@ -50,6 +52,14 @@ def run():
     win32gui.SetWindowLong(a, win32con.GWL_STYLE, win32con.WS_POPUP)
     print(a)
     while(v.isOpened()):
+        if roop == 750:
+            with open("./main.cfg", "r") as f:
+                cfg = f.readline()
+                f.close()
+
+            cfg = cfg.split("|")
+            print("update config.")
+            roop = 0
         r, f = v.read()
         if ( r == False ):
             break
@@ -57,6 +67,8 @@ def run():
         win32gui.SetWindowPos(a, win32con.HWND_NOTOPMOST, int(cfg[2]), int(cfg[3]), int(cfg[0]), int(cfg[1]), win32con.SWP_SHOWWINDOW)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
+
+        roop += 1
 
     v.release()
     cv2.destroyAllWindows()
